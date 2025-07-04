@@ -31,18 +31,11 @@ public class CheckoutService {
             return;
         }
 
-        // Deduct quantities from products
         for (CartItem cartItem : cart.getCartItems()) {
             cartItem.product.quantity -= cartItem.quantity;
         }
-
-        // Deduct money from customer
         customer.deductBalance(total);
-
-        // Shipping
         ShippingService.ship(cart.getCartItems());
-
-        // Print Receipt
         System.out.println("** Checkout receipt **");
         for (CartItem item : cart.getCartItems()) {
             System.out.printf("%dx %s %.0f\n", item.quantity, item.product.name, item.getTotalPrice());

@@ -1,6 +1,6 @@
 package src.model;
 
 public interface Shippable {
-    String getName();
-    double getWeight();
+    public String getName();
+    public double getWeight();
 }
